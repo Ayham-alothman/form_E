@@ -1,0 +1,47 @@
+@import 'ngx-toastr/toastr';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ITF Qomra Arabic Font Definitions */
+@font-face {
+  font-family: 'ITF Qomra Arabic';
+  src: url('/assets/fonts/itfQomraArabic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITF Qomra Arabic';
+  src: url('/assets/fonts/itfQomraArabic-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITF Qomra Arabic';
+  src: url('/assets/fonts/itfQomraArabic-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arabic language selector - now using ITF Qomra instead of Almarai */
+:lang(ar) {
+  font-family: 'ITF Qomra Arabic', 'Almarai', sans-serif;
+}
+
+/* Optional: If you want different weights for different elements in Arabic */
+:lang(ar) h1, :lang(ar) h2, :lang(ar) h3, :lang(ar) h4, :lang(ar) h5, :lang(ar) h6 {
+  font-weight: 700; /* Bold for headings */
+}
+
+:lang(ar) p, :lang(ar) span, :lang(ar) div:not(.special) {
+  font-weight: 400; /* Regular for body text */
+}
+
+:lang(ar) .medium-text {
+  font-weight: 500; /* Medium for specific elements */
+}

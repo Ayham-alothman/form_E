@@ -1,0 +1,1374 @@
+<div class="h-auto  ">
+    <!--section 1-->
+    <div class="h-24 bg-green flex items-center justify-center">
+        <img class="h-20" src="assets/images/13.webp" alt="Company Logo">
+    </div>
+    <!--section 2 -->
+
+    <!--start all info-->
+    <div style="background-image: url('assets/images/50.jpg');">
+        <div class="h-28 flex flex-col items-center justify-center space-y-4 my-5 ">
+            <h1 class="text-3xl xl:text-5xl font-bold text-green pt-10">{{ this.vacancies }}</h1>
+            <h1 class="text-3xl xl:text-5xl font-bold text-gold">نموذج طلب التوظيف </h1>
+            <h1 class="text-xl text-red-600 xl:text-3xl text-bold">يجب ملء المعلومات الشخصية باللغة العربية</h1>
+
+        </div>
+
+        <!--section 3 -->
+        <div class="h-24    px-6  sm:px-8 md:px-12 xl:px-20   flex items-center    ">
+
+            <div class=" space-y-2">
+
+                <div class="flex text-xl xl:text-2xl font-bold text-green">
+                    <p class="ml-2">طلب</p>
+                    <p class="">البيانات الشخصية</p>
+                </div>
+
+                <div>
+                    <p class="text-xl xl:text-2xl font-semibold text-gold font-arabic ">المعلومات الأساسية الخاصة بك</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <form [formGroup]="form">
+            <div class="h-auto px-6 sm:px-8 md:px-12 xl:px-20 grid grid-cols-1 gap-6 md:grid-cols-2">
+
+                <!-- Personal Information Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">المعلومات الشخصية</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- Full Name -->
+                                <div class="  space-y-1 text-sm font-light">
+                                    <p>الاسم الكامل *</p>
+                                    <input (input)="ChangeFullyName($event)" formControlName="fullname"
+                                        [class.invalid]="form.get('fullname')?.invalid && form.get('fullname')?.touched"
+                                        [class]="FullyNameV()==`3` ? 'border-red-800' : ''"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="text" />
+                                    <small *ngIf="form.get('fullname')?.invalid && form.get('fullname')?.touched"
+                                        class="text-sm font-base text-redd">يجب ان يحوي على أحرف فقط</small>
+                                </div>
+
+                                <!-- Mother Name -->
+                                <div class="  space-y-1 text-sm font-light">
+                                    <p class="text-sm font-light">اسم الام كامل*</p>
+                                    <input (input)="ChangeMotherName($event)" formControlName="mothername"
+                                        [class.invalid]="form.get('mothername')?.invalid && form.get('mothername')?.touched"
+                                        [class]="MotherNameV()==`3` ? 'border-red-800' : ''"
+                                        class="w-full h-10 border-2 MotherNameV rounded-xl pr-2" type="text" />
+                                    <small *ngIf="form.get('mothername')?.invalid && form.get('mothername')?.touched"
+                                        class="text-sm font-base text-redd">يجب ان يحوي على أحرف فقط</small>
+                                </div>
+
+                                <!-- isn -->
+                                <div class="  space-y-1 text-sm font-light">
+                                    <p class="text-sm font-light">الرقم الوطني*</p>
+                                    <input (input)="ChangeAge($event)" formControlName="isn"
+                                        [class.invalid]="form.get('isn')?.invalid && form.get('isn')?.touched"
+                                        [class]="this.AgeV()==`3` ? 'border-red-800' : ''"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="number" />
+                                    <small *ngIf="form.get('isn')?.invalid && form.get('isn')?.touched"
+                                        class="text-sm font-base text-redd">يجب ان يحوي على أرقام فقط</small>
+                                </div>
+
+
+                                <!-- Gender -->
+                                <div class="  space-y-1">
+                                    <p class="text-sm font-light">الجنس *</p>
+                                    <select (change)="ChangeGender($event)" formControlName="gender"
+                                        [class]="GenderV()=='3' ? 'border-red-800' : ''"
+                                        class="bg-white border-2 rounded-xl w-full h-10 text-sm font-light">
+                                        <option class="text-sm font-light" value="10">اختر الجنس</option>
+                                        <option class="text-sm font-light" value="1">ذكر</option>
+                                        <option class="text-sm font-light" value="0">أنثى</option>
+                                    </select>
+                                </div>
+
+                                <!-- Place of Birth -->
+                                <div class="  space-y-1 text-sm font-light">
+                                    <p class="text-sm font-light">مكان الولادة *</p>
+                                    <input (input)="ChangePlaceOfBrith($event)" formControlName="placebirthday"
+                                        [class.invalid]="form.get('placebirthday')?.invalid && form.get('placebirthday')?.touched"
+                                        [class]="this.PlaceOfBrithV=='3' ? 'border-red-800' : ''"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="text" />
+                                    <small
+                                        *ngIf="form.get('placebirthday')?.invalid && form.get('placebirthday')?.touched"
+                                        class="text-sm font-base text-redd">هذا الحقل مطلوب</small>
+                                </div>
+
+                                <!-- Age -->
+                                <div class="  space-y-1 text-sm font-light">
+                                    <p class="text-sm font-light">العمر *</p>
+                                    <input (input)="ChangeAge($event)" formControlName="age"
+                                        [class.invalid]="form.get('age')?.invalid && form.get('age')?.touched"
+                                        [class]="this.AgeV()==`3` ? 'border-red-800' : ''"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="number" />
+                                    <small *ngIf="form.get('age')?.invalid && form.get('age')?.touched"
+                                        class="text-sm font-base text-redd">يجب ان يحوي على أرقام فقط</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Residence Information Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">مكان الإقامة</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- Current Location -->
+                                <div class="  space-y-1 text-sm font-light">
+                                    <p class="text-sm font-light">مكان الاقامة الحالي *</p>
+                                    <input (input)="ChangeCurentLocation($event)" formControlName="curplace"
+                                        [class.invalid]="form.get('curplace')?.invalid && form.get('curplace')?.touched"
+                                        [class]="this.CurentLocationV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="text" />
+                                    <small *ngIf="form.get('curplace')?.invalid && form.get('curplace')?.touched"
+                                        class="text-sm font-base text-redd">هذا الحقل مطلوب</small>
+                                </div>
+
+                                <!-- Outside Syria -->
+                                <div class="h-auto text-sm">
+                                    <p class="text-sm text-green">هل كنت مقيم خارج اراضي سوريا ؟</p>
+                                    <div [class]="this.OutBorderSyriaV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="flex gap-4 p-2">
+                                        <label class="flex items-center text-sm">
+                                            <input type="radio" name="outBorderSyria" formControlName="outBorderSyria"
+                                                value="1" (change)="onOptionChange(true);ChangeOutBorderSyria(true)"
+                                                class="mr-3 px-2">
+                                            <p class="mx-1 text-sm font-light">نعم</p>
+                                        </label>
+                                        <label class="flex items-center text-sm">
+                                            <input type="radio" name="outBorderSyria" formControlName="outBorderSyria"
+                                                value="0" (change)="onOptionChange(false);ChangeOutBorderSyria(false)"
+                                                class="mr-2">
+                                            <p class="mx-1 text-sm font-light">لا</p>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Outside Syria Details -->
+                            <div *ngIf="showFormCountry" class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+                                <div class="text-sm font-light">
+                                    <p>اسم الدولة التي كنت تقيم بها ؟</p>
+                                    <input (input)="ChangeNameCountryOutBorder($event)" formControlName="namecountry"
+                                        [class.invalid]="form.get('namecountry')?.invalid && form.get('namecountry')?.touched"
+                                        [class]="this.NameCountryOutBorderV()=='3' ? 'border-red-800' : ''"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="text">
+                                    <small *ngIf="form.get('namecountry')?.invalid && form.get('namecountry')?.touched"
+                                        class="text-sm font-base text-redd">هذا الحقل مطلوب</small>
+                                </div>
+                                <div class="text-sm font-light">
+                                    <p>عدد سنوات الاقامة ؟</p>
+                                    <input (input)="ChangeNumberOfYearOutBorder($event)" formControlName="numberyear"
+                                        [class.invalid]="form.get('numberyear')?.invalid && form.get('numberyear')?.touched"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="number">
+                                    <small *ngIf="form.get('numberyear')?.invalid && form.get('numberyear')?.touched"
+                                        class="text-sm font-base text-redd">هذا الحقل مطلوب</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nationality Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">الجنسية</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="space-y-4">
+                                <div class="h-auto text-sm">
+                                    <p class="text-sm text-green">هل لديك جنسية اخرى غير السورية ؟</p>
+                                    <div [class]="this.NaitionElseSyriaV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="flex gap-4 p-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="Nationilty" value="1" formControlName="Nationilty"
+                                                (change)="onChangeNation(true);ChangeNaitionElseSyria(true)"
+                                                class="mr-2">
+                                            <p class="mx-1 text-sm font-light">نعم</p>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="Nationilty" value="0" formControlName="Nationilty"
+                                                (change)="onChangeNation(false);ChangeNaitionElseSyria(false)"
+                                                class="mr-2">
+                                            <p class="mx-1 text-sm font-light">لا</p>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="Naition" class="text-sm font-light">
+                                    <p class="">يرجى كتابة الجنسية الاخرى التي تحملها</p>
+                                    <input (input)="ChangeNameNaitionElse($event)" formControlName="nameelsenation"
+                                        [class.invalid]="form.get('nameelsenation')?.invalid && form.get('nameelsenation')?.touched"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="text">
+                                    <small
+                                        *ngIf="form.get('nameelsenation')?.invalid && form.get('nameelsenation')?.touched"
+                                        class="text-sm font-base text-redd">هذا الحقل مطلوب</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">معلومات الاتصال</h3>
+                        </div>
+
+                        <!-- Improved responsive flex container -->
+                        <div class="p-6 flex flex-col md:flex-row gap-6">
+                            <!-- Phone input section - takes full width on mobile, half on desktop -->
+                            <div class="flex-1 space-y-1">
+                                <p class="text-sm font-light">الهاتف *</p>
+                                <div class="flex w-full">
+                                    <input (input)="ChangePhoneNumber($event)" formControlName="phone"
+                                        placeholder="959770402"
+                                        [class.invalid]="form.get('phone')?.invalid && form.get('phone')?.touched"
+                                        [class]="this.PhoneNumberV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="flex-1 h-10 border-2 border-l-0 rounded-r-lg pr-2 min-w-0"
+                                        type="number" />
+                                    <select (change)="ChangeCodeCountryphone($event)"
+                                        class="w-auto bg-white border-2 border-r-0 rounded-l-lg text-sm font-semibold text-green px-3 py-2">
+                                        <option value="+963">963+</option>
+                                        <option value="+355">355+</option>
+                                        <option value="+213">213+</option>
+                                        <option value="+376">376+</option>
+                                        <option value="+244">244+</option>
+                                        <option value="+54">54+</option>
+                                        <option value="+374">374+</option>
+                                        <option value="+61">61+</option>
+                                        <option value="+43">43+</option>
+                                        <option value="+994">994+</option>
+                                        <option value="+973">973+</option>
+                                        <option value="+880">880+</option>
+                                        <option value="+375">375+</option>
+                                        <option value="+32">32+</option>
+                                        <option value="+501">501+</option>
+                                        <option value="+229">229+</option>
+                                        <option value="+975">975+</option>
+                                        <option value="+591">591+</option>
+                                        <option value="+387">387+</option>
+                                        <option value="+267">267+</option>
+                                        <option value="+55">55+</option>
+                                        <option value="+673">673+</option>
+                                        <option value="+359">359+</option>
+                                        <option value="+226">226+</option>
+                                        <option value="+257">257+</option>
+                                        <option value="+855">855+</option>
+                                        <option value="+237">237+</option>
+                                        <option value="+1">1+</option>
+                                        <option value="+238">238+</option>
+                                        <option value="+236">236+</option>
+                                        <option value="+235">235+</option>
+                                        <option value="+56">56+</option>
+                                        <option value="+86">86+</option>
+                                        <option value="+57">57+</option>
+                                        <option value="+269">269+</option>
+                                        <option value="+242">242+</option>
+                                        <option value="+243">243+</option>
+                                        <option value="+506">506+</option>
+                                        <option value="+385">385+</option>
+                                        <option value="+53">53+</option>
+                                        <option value="+357">357+</option>
+                                        <option value="+420">420+</option>
+                                        <option value="+45">45+</option>
+                                        <option value="+253">253+</option>
+                                        <option value="+593">593+</option>
+                                        <option value="+20">20+</option>
+                                        <option value="+503">503+</option>
+                                        <option value="+240">240+</option>
+                                        <option value="+291">291+</option>
+                                        <option value="+372">372+</option>
+                                        <option value="+268">268+</option>
+                                        <option value="+251">251+</option>
+                                        <option value="+679">679+</option>
+                                        <option value="+358">358+</option>
+                                        <option value="+33">33+</option>
+                                        <option value="+241">241+</option>
+                                        <option value="+220">220+</option>
+                                        <option value="+995">995+</option>
+                                        <option value="+49">49+</option>
+                                        <option value="+233">233+</option>
+                                        <option value="+30">30+</option>
+                                        <option value="+502">502+</option>
+                                        <option value="+224">224+</option>
+                                        <option value="+245">245+</option>
+                                        <option value="+592">592+</option>
+                                        <option value="+509">509+</option>
+                                        <option value="+504">504+</option>
+                                        <option value="+36">36+</option>
+                                        <option value="+354">354+</option>
+                                        <option value="+91">91+</option>
+                                        <option value="+62">62+</option>
+                                        <option value="+98">98+</option>
+                                        <option value="+964">964+</option>
+                                        <option value="+353">353+</option>
+                                        <option value="+972">972+</option>
+                                        <option value="+39">39+</option>
+                                        <option value="+81">81+</option>
+                                        <option value="+962">962+</option>
+                                        <option value="+7">7+</option>
+                                        <option value="+254">254+</option>
+                                        <option value="+686">686+</option>
+                                        <option value="+383">383+</option>
+                                        <option value="+965">965+</option>
+                                        <option value="+996">996+</option>
+                                        <option value="+856">856+</option>
+                                        <option value="+371">371+</option>
+                                        <option value="+961">961+</option>
+                                        <option value="+266">266+</option>
+                                        <option value="+231">231+</option>
+                                        <option value="+218">218+</option>
+                                        <option value="+423">423+</option>
+                                        <option value="+370">370+</option>
+                                        <option value="+352">352+</option>
+                                        <option value="+261">261+</option>
+                                        <option value="+265">265+</option>
+                                        <option value="+60">60+</option>
+                                        <option value="+960">960+</option>
+                                        <option value="+223">223+</option>
+                                        <option value="+356">356+</option>
+                                        <option value="+692">692+</option>
+                                        <option value="+222">222+</option>
+                                        <option value="+230">230+</option>
+                                        <option value="+52">52+</option>
+                                        <option value="+691">691+</option>
+                                        <option value="+373">373+</option>
+                                        <option value="+377">377+</option>
+                                        <option value="+976">976+</option>
+                                        <option value="+382">382+</option>
+                                        <option value="+212">212+</option>
+                                        <option value="+258">258+</option>
+                                        <option value="+95">95+</option>
+                                        <option value="+264">264+</option>
+                                        <option value="+674">674+</option>
+                                        <option value="+977">977+</option>
+                                        <option value="+31">31+</option>
+                                        <option value="+64">64+</option>
+                                        <option value="+505">505+</option>
+                                        <option value="+227">227+</option>
+                                        <option value="+234">234+</option>
+                                        <option value="+389">389+</option>
+                                        <option value="+47">47+</option>
+                                        <option value="+968">968+</option>
+                                        <option value="+92">92+</option>
+                                        <option value="+680">680+</option>
+                                        <option value="+970">970+</option>
+                                        <option value="+507">507+</option>
+                                        <option value="+675">675+</option>
+                                        <option value="+595">595+</option>
+                                        <option value="+51">51+</option>
+                                        <option value="+63">63+</option>
+                                        <option value="+48">48+</option>
+                                        <option value="+351">351+</option>
+                                        <option value="+974">974+</option>
+                                        <option value="+40">40+</option>
+                                        <option value="+250">250+</option>
+                                        <option value="+685">685+</option>
+                                        <option value="+378">378+</option>
+                                        <option value="+239">239+</option>
+                                        <option value="+966">966+</option>
+                                        <option value="+221">221+</option>
+                                        <option value="+381">381+</option>
+                                        <option value="+248">248+</option>
+                                        <option value="+232">232+</option>
+                                        <option value="+65">65+</option>
+                                        <option value="+421">421+</option>
+                                        <option value="+386">386+</option>
+                                        <option value="+677">677+</option>
+                                        <option value="+252">252+</option>
+                                        <option value="+27">27+</option>
+                                        <option value="+82">82+</option>
+                                        <option value="+211">211+</option>
+                                        <option value="+34">34+</option>
+                                        <option value="+94">94+</option>
+                                        <option value="+249">249+</option>
+                                        <option value="+597">597+</option>
+                                        <option value="+46">46+</option>
+                                        <option value="+41">41+</option>
+                                        <option value="+963">963+</option>
+                                        <option value="+886">886+</option>
+                                        <option value="+992">992+</option>
+                                        <option value="+255">255+</option>
+                                        <option value="+66">66+</option>
+                                        <option value="+228">228+</option>
+                                        <option value="+676">676+</option>
+                                        <option value="+216">216+</option>
+                                        <option value="+90">90+</option>
+                                        <option value="+993">993+</option>
+                                        <option value="+688">688+</option>
+                                        <option value="+256">256+</option>
+                                        <option value="+380">380+</option>
+                                        <option value="+971">971+</option>
+                                        <option value="+44">44+</option>
+                                        <option value="+598">598+</option>
+                                        <option value="+998">998+</option>
+                                        <option value="+678">678+</option>
+                                        <option value="+379">379+</option>
+                                        <option value="+58">58+</option>
+                                        <option value="+84">84+</option>
+                                        <option value="+967">967+</option>
+                                        <option value="+260">260+</option>
+                                        <option value="+263">263+</option>
+                                    </select>
+                                </div>
+                                <small *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched"
+                                    class="text-sm font-base text-redd">يجب ان يحوي على أرقام فقط</small>
+                            </div>
+
+                            <!-- Current location section - takes full width on mobile, half on desktop -->
+                            <div class="flex-1 space-y-1">
+                                <p class="text-sm font-light">ايميل*</p>
+                                <input (input)="ChangeCurentLocation($event)" formControlName="email"
+                                    class="w-full h-10 border-2 rounded-lg pr-2" type="email" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Card -->
+                <div class="col-span-1 md:col-span-2 text-sm font-light">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">المؤهلات العلمية</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="space-y-4">
+                                <div class="h-auto  space-y-1">
+                                    <p class="text-sm font-light">المؤهل العلمي *</p>
+                                    <select (change)="onChangeNumberofYear($event)" formControlName="certification"
+                                        class="bg-white border-2 rounded-xl w-full h-10 text-sm font-light">
+                                        <option *ngFor="let degree of Degree" [value]="degree.id">{{ degree.degree_name
+                                            }}
+                                        </option>
+
+                                    </select>
+                                </div>
+
+                                <div *ngIf="ShowNumberofyearEducation"
+                                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                                    <!-- الحقل الأول -->
+                                    <div class="space-y-1">
+                                        <p class="text-sm font-light">عدد سنوات الدراسة (رقماً)</p>
+                                        <input class="w-full h-10 border-2 rounded-xl pr-2" formControlName="yearstu"
+                                            [class.invalid]="form.get('yearstu')?.invalid && form.get('yearstu')?.touched"
+                                            type="number" />
+                                        <small *ngIf="form.get('yearstu')?.invalid && form.get('yearstu')?.touched"
+                                            class="text-sm text-red-600">
+                                            يجب أن يحوي على أرقام فقط
+                                        </small>
+                                    </div>
+
+                                    <!-- الحقل الثاني -->
+                                    <div class="space-y-1">
+                                        <p class="text-sm font-light">اسم الجامعة او المعهد</p>
+                                        <input class="w-full h-10 border-2 rounded-xl pr-2"
+                                            formControlName="nameuniversity"
+                                            [class.invalid]="form.get('nameuniversity')?.invalid && form.get('nameuniversity')?.touched"
+                                            type="text" />
+                                        <small
+                                            *ngIf="form.get('nameuniversity')?.invalid && form.get('nameuniversity')?.touched"
+                                            class="text-sm text-red-600">
+                                            هذا الحقل مطلوب
+                                        </small>
+                                    </div>
+
+                                    <!-- الحقل الثالث -->
+                                    <div class="space-y-1">
+                                        <p class="text-sm font-light">الإختصاص</p>
+                                        <input class="w-full h-10 border-2 rounded-xl pr-2"
+                                            formControlName="specification"
+                                            [class.invalid]="form.get('specification')?.invalid && form.get('specification')?.touched"
+                                            type="text" />
+                                        <small
+                                            *ngIf="form.get('specification')?.invalid && form.get('specification')?.touched"
+                                            class="text-sm text-red-600">
+                                            هذا الحقل مطلوب
+                                        </small>
+                                    </div>
+
+                                    <!-- الحقل الرابع -->
+                                    <div class="space-y-1">
+                                        <p class="text-sm font-light">سنة التخرج</p>
+                                        <input class="w-full h-10 border-2 rounded-xl pr-2"
+                                            formControlName="yeargardution"
+                                            [class.invalid]="form.get('yeargardution')?.invalid && form.get('yeargardution')?.touched"
+                                            type="number" />
+                                        <small
+                                            *ngIf="form.get('yeargardution')?.invalid && form.get('yeargardution')?.touched"
+                                            class="text-sm text-red-600">
+                                            هذا الحقل مطلوب
+                                        </small>
+                                    </div>
+
+                                    <!-- الحقل الخامس -->
+                                    <div class="space-y-1">
+                                        <p class="text-sm font-light">معدل التخرج</p>
+                                        <input class="w-full h-10 border-2 rounded-xl pr-2" formControlName="gpa"
+                                            [class.invalid]="form.get('gpa')?.invalid && form.get('gpa')?.touched"
+                                            type="number" />
+                                        <small *ngIf="form.get('gpa')?.invalid && form.get('gpa')?.touched"
+                                            class="text-sm text-red-600">
+                                            هذا الحقل مطلوب
+                                        </small>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Skills Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">مهارات حاسوب</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex flex-col space-y-3">
+                                <!-- Word -->
+                                <div class="flex text-sm py-2 items-center">
+                                    <div class="flex-shrink-0 w-24 sm:w-32 md:w-40">
+                                        <p
+                                            class="text-blue-600 text-base sm:text-xl md:text-2xl font-bold whitespace-nowrap">
+                                            word
+                                        </p>
+                                    </div>
+
+                                    <div [class]="this.LevelWordV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="flex justify-around w-full text-sm font-light p-2">
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="word" formControlName="word" value="1"
+                                                (change)="Changelevelword('1');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">مبتدئ</p>
+                                        </label>
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="word" formControlName="word" value="2"
+                                                (change)="Changelevelword('2');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">متوسط</p>
+                                        </label>
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="word" formControlName="word" value="3"
+                                                (change)="Changelevelword('3');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">متقدم</p>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <!-- Excel -->
+                                <div class="flex text-sm py-2 items-center">
+                                    <div class="flex-shrink-0 w-24 sm:w-32 md:w-40">
+                                        <p
+                                            class="text-green text-base sm:text-xl md:text-2xl font-bold whitespace-nowrap">
+                                            Exel
+                                        </p>
+                                    </div>
+
+                                    <div [class]="this.LevelExelV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="flex justify-around w-full text-sm font-light p-2">
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="excel" formControlName="excel" value="1"
+                                                (change)="ChangeLevelExel('1');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">مبتدئ</p>
+                                        </label>
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="excel" formControlName="excel" value="2"
+                                                (change)="ChangeLevelExel('2');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">متوسط</p>
+                                        </label>
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="excel" formControlName="excel" value="3"
+                                                (change)="ChangeLevelExel('3');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">متقدم</p>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <!-- PowerPoint -->
+                                <div class="flex text-sm py-2 items-center">
+                                    <div class="flex-shrink-0 w-24 sm:w-32 md:w-40">
+                                        <p
+                                            class="text-red-600 text-base sm:text-xl md:text-2xl font-bold whitespace-nowrap">
+                                            powerpoient
+                                        </p>
+                                    </div>
+
+                                    <div [class]="this.levelPowerpointV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="flex justify-around w-full text-sm font-light p-2">
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="powerpoinet" formControlName="powerpoinet"
+                                                value="1" (change)="ChangelevelPowerpoint('1');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">مبتدئ</p>
+                                        </label>
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="powerpoinet" formControlName="powerpoinet"
+                                                value="2" (change)="ChangelevelPowerpoint('2');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">متوسط</p>
+                                        </label>
+
+                                        <label class="flex items-center">
+                                            <input type="radio" name="powerpoinet" formControlName="powerpoinet"
+                                                value="3" (change)="ChangelevelPowerpoint('3');" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">متقدم</p>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!---->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">الخبرات العملية</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="space-y-4">
+                                <div class="text-sm font-light">
+                                    <p>عدد سنوات الخبرة ؟</p>
+                                    <input (input)="ChangeNumberOfYearOutBorder($event)" formControlName="years_expe"
+                                        [class.invalid]="form.get('years_expe')?.invalid && form.get('years_expe')?.touched"
+                                        class="w-full h-10 border-2 rounded-xl pr-2" type="number">
+                                    <small *ngIf="form.get('years_expe')?.invalid && form.get('years_expe')?.touched"
+                                        class="text-sm font-base text-redd">هذا الحقل مطلوب</small>
+                                </div>
+                                <!-- Previous Experience -->
+                                <div class="h-auto text-sm">
+                                    <p class="text-sm text-green">هل لديك خبرة سابقة في نفس الشاغر ؟</p>
+                                    <div [class]="this.PerviousWorkV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="flex gap-4 p-2">
+                                        <label class="flex items-center text-sm">
+                                            <input type="radio" name="expe" formControlName="expe" value="1"
+                                                (change)="onChangeExpe(true);ChangePerviousWork(true);"
+                                                class="mr-3 px-2">
+                                            <p class="mx-1 text-sm font-light">نعم</p>
+                                        </label>
+                                        <label class="flex items-center text-sm">
+                                            <input type="radio" name="expe" value="0" formControlName="expe"
+                                                (change)="onChangeExpe(false);ChangePerviousWork(false);" class="mr-2">
+                                            <p class="mx-1 text-sm font-light">لا</p>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- Experience Details -->
+                                <div *ngIf="ShowExpInput" class="flex flex-col gap-4">
+
+                                    <!-- Experience Card 1 - Horizontal on desktop -->
+                                    <div
+                                        class="first bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 md:flex md:flex-row">
+
+                                        <!-- Card Header - On top in mobile, on right side in desktop -->
+                                        <div
+                                            class="bg-gradient-to-l from-blue-50 to-indigo-50 px-4 py-3 border-b border-gray-100 md:border-b-0 md:border-l md:w-64 md:flex-shrink-0">
+                                            <p class="text-base font-bold text-gray-800">الخبرة العملية الأولى</p>
+                                        </div>
+
+                                        <!-- Card Body - Fields container with tighter spacing -->
+                                        <div class="p-4 md:flex-1 md:grid md:grid-cols-2 md:gap-3 lg:grid-cols-3">
+                                            <!-- Employer Name -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">اسم الجهة/الجهات
+                                                    التي عملت بها
+                                                </p>
+                                                <input (input)="ChangeNamePriviouswork($event)"
+                                                    formControlName="nameenterprice1"
+                                                    [class.invalid]="form.get('nameenterprice1')?.invalid && form.get('nameenterprice1')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="text" placeholder="أدخل اسم الجهة">
+                                                <small
+                                                    *ngIf="form.get('nameenterprice1')?.invalid && form.get('nameenterprice1')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Job Title -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">المسمى الوظيفي</p>
+                                                <input (input)="ChangeNamePriviouswork($event)"
+                                                    formControlName="postion1"
+                                                    [class.invalid]="form.get('postion1')?.invalid && form.get('postion1')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="text" placeholder="أدخل المسمى الوظيفي">
+                                                <small
+                                                    *ngIf="form.get('postion1')?.invalid && form.get('postion1')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Years of Experience -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">سنوات الخبرة</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="yearexp1"
+                                                    [class.invalid]="form.get('yearexp1')?.invalid && form.get('yearexp1')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="number" placeholder="مثال: 5">
+                                                <small
+                                                    *ngIf="form.get('yearexp1')?.invalid && form.get('yearexp1')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">أرقام فقط</small>
+                                            </div>
+
+                                            <!-- Start Date -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">تاريخ البدء</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="startdate1"
+                                                    [class.invalid]="form.get('startdate1')?.invalid && form.get('startdate1')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="date">
+                                                <small
+                                                    *ngIf="form.get('startdate1')?.invalid && form.get('startdate1')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- End Date -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">تاريخ الانتهاء</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="enddate1"
+                                                    [class.invalid]="form.get('enddate1')?.invalid && form.get('enddate1')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="date">
+                                                <small
+                                                    *ngIf="form.get('enddate1')?.invalid && form.get('enddate1')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Description - Takes full width on desktop -->
+                                            <div class="text-xs font-light mb-2 md:mb-0 md:col-span-2 lg:col-span-3">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">وصف المهام</p>
+                                                <textarea formControlName="descriptiontask1" class="w-full px-3 py-2 min-h-[60px] font-light text-gray-700 text-sm
+                         placeholder-gray-400 border-2 border-gray-200 rounded-lg 
+                         hover:border-gray-300 focus:outline-none focus:border-blue-500 
+                         focus:ring-2 focus:ring-blue-200 transition-all duration-200 resize-vertical"
+                                                    placeholder="وصف مهامك (30 كلمة كحد أقصى)" rows="2"></textarea>
+                                            </div>
+
+                                            <!-- Current Work - Takes full width on desktop with tighter padding -->
+                                            <div class="text-xs bg-gray-50 p-3 rounded-lg md:col-span-2 lg:col-span-3">
+                                                <p class="text-gray-700 font-medium mb-2 text-xs">هل انت مرتبط في هذا
+                                                    العمل حالياً ؟</p>
+                                                <div [class]="form.get('relatiovnwrok1')?.invalid && form.get('relatiovnwrok1')?.touched ? 'border-2 border-red-500 rounded-lg' : ''"
+                                                    class="flex gap-4">
+                                                    <label class="flex items-center cursor-pointer group">
+                                                        <input type="radio" name="relatiovnwrok1"
+                                                            formControlName="relatiovnwrok1" value="yes"
+                                                            (change)="ChangeCurentWork(true);"
+                                                            class="ml-2 w-3.5 h-3.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-1">
+                                                        <p class="text-xs group-hover:text-blue-600 transition-colors">
+                                                            نعم</p>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer group">
+                                                        <input type="radio" name="relatiovnwrok1"
+                                                            formControlName="relatiovnwrok1" value="no"
+                                                            (change)="ChangeCurentWork(false);"
+                                                            class="ml-2 w-3.5 h-3.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-1">
+                                                        <p class="text-xs group-hover:text-blue-600 transition-colors">
+                                                            لا</p>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Experience Card 2 - Horizontal on desktop with same tight spacing -->
+                                    <div *ngIf="Nexpe>=2"
+                                        class="secand bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 md:flex md:flex-row">
+
+                                        <!-- Card Header -->
+                                        <div
+                                            class="bg-white px-4 py-3 border-b-2 border-blue-100 md:border-b-0 md:border-l md:w-64 md:flex-shrink-0">
+                                            <div
+                                                class="flex items-center justify-between md:flex-col md:items-start md:gap-2">
+                                                <p class="text-base font-bold text-gray-800 relative">
+                                                    الخبرة العملية الثانية
+                                                    <span
+                                                        class="absolute bottom-0 right-0 w-10 h-0.5 bg-blue-500 rounded-full"></span>
+                                                </p>
+                                                <button *ngIf="Nexpe==2" (click)="cancelExpe()"
+                                                    class="border border-red-300 hover:border-red-500 text-red-500 hover:text-red-600 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 hover:bg-red-50">
+                                                    الغاء
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card Body with same tight spacing -->
+                                        <div class="p-4 md:flex-1 md:grid md:grid-cols-2 md:gap-3 lg:grid-cols-3">
+                                            <!-- Employer Name -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">اسم الجهة</p>
+                                                <input (input)="ChangeNamePriviouswork($event)"
+                                                    formControlName="nameenterprice2"
+                                                    [class.invalid]="form.get('nameenterprice2')?.invalid && form.get('nameenterprice2')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="text" placeholder="أدخل اسم الجهة">
+                                                <small
+                                                    *ngIf="form.get('nameenterprice2')?.invalid && form.get('nameenterprice2')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Job Title -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">المسمى الوظيفي</p>
+                                                <input (input)="ChangeNamePriviouswork($event)"
+                                                    formControlName="postion2"
+                                                    [class.invalid]="form.get('postion2')?.invalid && form.get('postion2')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="text" placeholder="أدخل المسمى الوظيفي">
+                                                <small
+                                                    *ngIf="form.get('postion2')?.invalid && form.get('postion2')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Years of Experience -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">سنوات الخبرة</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="yearexp2"
+                                                    [class.invalid]="form.get('yearexp2')?.invalid && form.get('yearexp2')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="number" placeholder="مثال: 5">
+                                                <small
+                                                    *ngIf="form.get('yearexp2')?.invalid && form.get('yearexp2')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">أرقام فقط</small>
+                                            </div>
+
+                                            <!-- Start Date -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">تاريخ البدء</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="startdate2"
+                                                    [class.invalid]="form.get('startdate2')?.invalid && form.get('startdate2')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="date">
+                                                <small
+                                                    *ngIf="form.get('startdate2')?.invalid && form.get('startdate2')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- End Date -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">تاريخ الانتهاء</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="enddate2"
+                                                    [class.invalid]="form.get('enddate2')?.invalid && form.get('enddate2')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="date">
+                                                <small
+                                                    *ngIf="form.get('enddate2')?.invalid && form.get('enddate2')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Description -->
+                                            <div class="text-xs font-light mb-2 md:mb-0 md:col-span-2 lg:col-span-3">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">وصف المهام</p>
+                                                <textarea formControlName="descriptiontask2" class="w-full px-3 py-2 min-h-[60px] font-light text-gray-700 text-sm
+                           placeholder-gray-400 border-2 border-gray-200 rounded-lg 
+                           hover:border-gray-300 focus:outline-none focus:border-blue-500 
+                           focus:ring-2 focus:ring-blue-200 transition-all duration-200 resize-vertical"
+                                                    placeholder="وصف مهامك (30 كلمة كحد أقصى)" rows="2"></textarea>
+                                            </div>
+
+                                            <!-- Current Work -->
+                                            <div class="text-xs bg-gray-50 p-3 rounded-lg md:col-span-2 lg:col-span-3">
+                                                <p class="text-gray-700 font-medium mb-2 text-xs">هل انت مرتبط في هذا
+                                                    العمل حالياً ؟</p>
+                                                <div [class]="form.get('relatiovnwrok2')?.invalid && form.get('relatiovnwrok2')?.touched ? 'border-2 border-red-500 rounded-lg' : ''"
+                                                    class="flex gap-4">
+                                                    <label class="flex items-center cursor-pointer group">
+                                                        <input type="radio" name="relatiovnwrok2"
+                                                            formControlName="relatiovnwrok2" value="yes"
+                                                            (change)="ChangeCurentWork(true);"
+                                                            class="ml-2 w-3.5 h-3.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-1">
+                                                        <p class="text-xs group-hover:text-blue-600 transition-colors">
+                                                            نعم</p>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer group">
+                                                        <input type="radio" name="relatiovnwrok2"
+                                                            formControlName="relatiovnwrok2" value="no"
+                                                            (change)="ChangeCurentWork(false);"
+                                                            class="ml-2 w-3.5 h-3.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-1">
+                                                        <p class="text-xs group-hover:text-blue-600 transition-colors">
+                                                            لا</p>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Experience Card 3 - Same pattern -->
+                                    <div *ngIf="Nexpe>=3"
+                                        class="third bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 md:flex md:flex-row">
+
+                                        <!-- Card Header -->
+                                        <div
+                                            class="bg-white px-4 py-3 border-b-2 border-blue-100 md:border-b-0 md:border-l md:w-64 md:flex-shrink-0">
+                                            <div
+                                                class="flex items-center justify-between md:flex-col md:items-start md:gap-2">
+                                                <p class="text-base font-bold text-gray-800 relative">
+                                                    الخبرة العملية الثالثة
+                                                    <span
+                                                        class="absolute bottom-0 right-0 w-10 h-0.5 bg-blue-500 rounded-full"></span>
+                                                </p>
+                                                <button (click)="cancelExpe()"
+                                                    class="border border-red-300 hover:border-red-500 text-red-500 hover:text-red-600 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 hover:bg-red-50">
+                                                    الغاء
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card Body -->
+                                        <div class="p-4 md:flex-1 md:grid md:grid-cols-2 md:gap-3 lg:grid-cols-3">
+                                            <!-- Employer Name -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">اسم الجهة</p>
+                                                <input (input)="ChangeNamePriviouswork($event)"
+                                                    formControlName="nameenterprice3"
+                                                    [class.invalid]="form.get('nameenterprice3')?.invalid && form.get('nameenterprice3')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="text" placeholder="أدخل اسم الجهة">
+                                                <small
+                                                    *ngIf="form.get('nameenterprice3')?.invalid && form.get('nameenterprice3')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Job Title -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">المسمى الوظيفي</p>
+                                                <input (input)="ChangeNamePriviouswork($event)"
+                                                    formControlName="postion3"
+                                                    [class.invalid]="form.get('postion3')?.invalid && form.get('postion3')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="text" placeholder="أدخل المسمى الوظيفي">
+                                                <small
+                                                    *ngIf="form.get('postion3')?.invalid && form.get('postion3')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Years of Experience -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">سنوات الخبرة</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="yearexp3"
+                                                    [class.invalid]="form.get('yearexp3')?.invalid && form.get('yearexp3')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="number" placeholder="مثال: 5">
+                                                <small
+                                                    *ngIf="form.get('yearexp3')?.invalid && form.get('yearexp3')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">أرقام فقط</small>
+                                            </div>
+
+                                            <!-- Start Date -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">تاريخ البدء</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="startdate3"
+                                                    [class.invalid]="form.get('startdate3')?.invalid && form.get('startdate3')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="date">
+                                                <small
+                                                    *ngIf="form.get('startdate3')?.invalid && form.get('startdate3')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- End Date -->
+                                            <div class="text-xs font-light mb-2 md:mb-0">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">تاريخ الانتهاء</p>
+                                                <input (input)="ChangeNumberOfYearPriviousWork($event)"
+                                                    formControlName="enddate3"
+                                                    [class.invalid]="form.get('enddate3')?.invalid && form.get('enddate3')?.touched"
+                                                    class="w-full h-9 border-2 border-gray-200 rounded-lg pr-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 outline-none text-sm"
+                                                    type="date">
+                                                <small
+                                                    *ngIf="form.get('enddate3')?.invalid && form.get('enddate3')?.touched"
+                                                    class="text-xs text-red-500 block mt-0.5">مطلوب</small>
+                                            </div>
+
+                                            <!-- Description -->
+                                            <div class="text-xs font-light mb-2 md:mb-0 md:col-span-2 lg:col-span-3">
+                                                <p class="text-gray-700 mb-0.5 font-medium text-xs">وصف المهام</p>
+                                                <textarea formControlName="descriptiontask3" class="w-full px-3 py-2 min-h-[60px] font-light text-gray-700 text-sm
+                          placeholder-gray-400 border-2 border-gray-200 rounded-lg 
+                          hover:border-gray-300 focus:outline-none focus:border-blue-500 
+                          focus:ring-2 focus:ring-blue-200 transition-all duration-200 resize-vertical"
+                                                    placeholder="وصف مهامك (30 كلمة كحد أقصى)" rows="2"></textarea>
+                                            </div>
+
+                                            <!-- Current Work -->
+                                            <div class="text-xs bg-gray-50 p-3 rounded-lg md:col-span-2 lg:col-span-3">
+                                                <p class="text-gray-700 font-medium mb-2 text-xs">هل انت مرتبط في هذا
+                                                    العمل حالياً ؟</p>
+                                                <div [class]="form.get('relatiovnwrok3')?.invalid && form.get('relatiovnwrok3')?.touched ? 'border-2 border-red-500 rounded-lg' : ''"
+                                                    class="flex gap-4">
+                                                    <label class="flex items-center cursor-pointer group">
+                                                        <input type="radio" name="relatiovnwrok3"
+                                                            formControlName="relatiovnwrok3" value="yes"
+                                                            (change)="ChangeCurentWork(true);"
+                                                            class="ml-2 w-3.5 h-3.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-1">
+                                                        <p class="text-xs group-hover:text-blue-600 transition-colors">
+                                                            نعم</p>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer group">
+                                                        <input type="radio" name="relatiovnwrok3"
+                                                            formControlName="relatiovnwrok3" value="no"
+                                                            (change)="ChangeCurentWork(false);"
+                                                            class="ml-2 w-3.5 h-3.5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-1">
+                                                        <p class="text-xs group-hover:text-blue-600 transition-colors">
+                                                            لا</p>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Add Experience Button Card with tighter spacing -->
+                                    <div class="w-full">
+                                        <div
+                                            class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border-2 border-dashed border-blue-200 p-4 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
+                                            <button (click)="addMoreExpe()"
+                                                class="w-full flex items-center justify-center gap-2 text-blue-600 font-medium group-hover:text-blue-700">
+                                                <svg class="w-5 h-5 group-hover:scale-110 transition-transform"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                                </svg>
+                                                @if (Nexpe === 3) {
+                                                <span class="text-base">لا يمكن إضافة المزيد (الحد الأقصى 3)</span>
+                                                } @else {
+                                                <span class="text-base">إضافة خبرة عملية أخرى</span>
+                                                }
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">اللغات</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="space-y-4">
+                                <div class="h-auto text-sm">
+                                    <p class="text-sm text-green">هل تجيد لغة أخرى غير العربية ؟</p>
+                                    <div [class]="SecandLanguageV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="flex gap-4 p-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="secandlanguage" formControlName="secandlanguage"
+                                                value="1" (change)="onChangeLanguage(true);ChangeSecandLanguage(true);"
+                                                class="mr-2">
+                                            <p class="mx-1 text-sm font-light">نعم</p>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="secandlanguage" formControlName="secandlanguage"
+                                                value="0"
+                                                (change)="onChangeLanguage(false);ChangeSecandLanguage(false);"
+                                                class="mr-2">
+                                            <p class="mx-1 text-sm font-light">لا</p>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="ShowLangage" class="text-sm font-light">
+                                    <!-- List of added languages -->
+                                    <div *ngIf="languagesArray.length > 0" class="mb-4 space-y-2">
+                                        <div *ngFor="let lang of languagesArray; let i = index"
+                                            class="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200">
+                                            <div class="flex gap-4">
+                                                <span class="font-medium">لغة {{ matchlanguage(lang.id) }}</span>
+                                                <span class="text-gray-600">-</span>
+                                                <span>{{ getLevelName(lang.level) }}</span>
+                                            </div>
+                                            <button (click)="removeLanguage(i)"
+                                                class="text-red-500 hover:text-red-700 text-sm">
+                                                ✕
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Add new language form -->
+                                    <div class="space-y-3">
+                                        <div class="h-auto space-y-1">
+                                            <p class="text-sm font-light">اللغة</p>
+                                            <select #langSelect
+                                                class="bg-white border-2 rounded-xl w-full h-10 text-sm font-light">
+                                                <option value="0">اختر اللغة</option>
+                                                <option *ngFor="let lang of languges" [value]="lang.id">{{ lang.name }}
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="h-auto space-y-1">
+                                            <p class="text-sm font-light">المستوى</p>
+                                            <select #levelSelect
+                                                class="bg-white border-2 rounded-xl w-full h-10 text-sm font-light">
+                                                <option value="0">حدد المستوى</option>
+                                                <option value="1">مبتدئ</option>
+                                                <option value="2">متوسط</option>
+                                                <option value="3">متقدم</option>
+                                            </select>
+                                        </div>
+
+                                        <button class="w-full bg-green text-white  py-2 rounded-xl  "
+                                            (click)="addLanguage(langSelect.value, levelSelect.value); langSelect.value='0'; levelSelect.value='0'">
+                                            إضافة لغة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- skills Card -->
+
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">المهارات</h3>
+                        </div>
+
+                        <!-- Skills Checkbox List -->
+                        <div class="p-6 text-green">
+                            <div class="space-y-3">
+                                <div *ngFor="let skill of skills" class="flex items-center space-x-2">
+                                    <input
+                                        class="w-4 h-4 mx-3 text-blue-600 bg-gray-100 border-gray-300 rounded-xl focus:ring-blue-500"
+                                        type="checkbox" [id]="'skill_' + skill.id" [value]="skill.id"
+                                        [checked]="isSkillSelected(skill.id)"
+                                        (change)="onSkillChange($event, skill.id)">
+                                    <label [for]="'skill_' + skill.id" class="ml-3 text-xl  font-medium ">
+                                        {{ skill.name }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Optional: Display selected skills count or IDs -->
+                            <div *ngIf="filterSkills.length > 0" class="mt-4 text-sm text-gray-600">
+                                Selected skills: {{ filterSkills.length }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Availability Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">التوفر الوظيفي</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="h-auto  space-y-1">
+                                <p class="text-sm font-light text-green">في حال نجاحك في المسابقة وقبولك في التوظيف ما
+                                    هو
+                                    الوقت
+                                    المتوقع لمباشرتك العمل ؟</p>
+                                <select (change)="ChangeDirectWork($event)" formControlName="directwork"
+                                    class="bg-white border-2 rounded-xl w-full h-10 text-sm font-light">
+                                    <option class="text-sm font-light" value="1">مباشرة</option>
+                                    <option class="text-sm font-light" value="2">خلال أسبوع</option>
+                                    <option class="text-sm font-light" value="3">خلال أسبوعين</option>
+                                    <option class="text-sm font-light" value="4">خلال ثلاثة أسابيع</option>
+                                    <option class="text-sm font-light" value="5">خلال أربعة اسابيع</option>
+                                    <option class="text-sm font-light" value="6">أكثر من أربعة اسابيع</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documents Card -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">المستندات المطلوبة</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <!-- CV Upload -->
+                                <div class="h-auto">
+                                    <div [class]="this.FileCvV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="bg-gray-50 rounded-lg p-4">
+                                        <p class="block mb-3 text-gray-700 font-medium text-sm">ارفق سيرتك الذاتية بصيغة
+                                            PDF
+                                        </p>
+                                        <input type="file" #fileUploadcv id="fileUpload" formControlName="filecv"
+                                            class="hidden" (change)="onChangFileCv($event)">
+                                        <button type="button" (click)="fileUploadcv.click()"
+                                            class="w-full py-3 bg-green text-white rounded-lg hover:bg-blue-600 text-sm">
+                                            تصفح ملفاتك
+                                        </button>
+                                        <p *ngIf="ShowCv" class="text-sm text-gray-500 mt-2 text-center font-bold">✅ تم
+                                            رفع
+                                            بنجاح</p>
+                                        <p *ngIf="this.FileSizeAboveLimetCV()"
+                                            class="text-sm text-red-500 mt-2 text-center font-bold">
+                                            حجم الملف اكبر من 2mb
+                                        </p>
+                                        <p *ngIf="ShowCv" class="text-sm text-gray-500 mt-2 text-center font-bold">اسم
+                                            الملف
+                                            {{
+                                            NameFileCv }}</p>
+                                    </div>
+                                </div>
+
+                                <!-- Certificate Upload -->
+                                <div *ngIf="ShowNumberofyearEducation" class="h-auto">
+                                    <div [class]="this.FileCertV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="bg-gray-50 rounded-lg p-4">
+                                        <p class="block mb-3 text-gray-700 font-medium text-sm">أرفق نسخة عن المؤهل
+                                            العلمي
+                                            pdf
+                                        </p>
+                                        <input type="file" #fileUploadcert id="fileUploadcert" class="hidden"
+                                            formControlName="filecert" (change)="onChangeFileCert($event)">
+                                        <button type="button" (click)="fileUploadcert.click()"
+                                            (click)="$event.preventDefault()"
+                                            class="w-full py-3 bg-green text-white rounded-lg hover:bg-blue-600 text-sm">
+                                            تصفح ملفاتك
+                                        </button>
+                                        <p *ngIf="ShowCert" class="text-sm text-gray-500 mt-2 text-center font-bold">✅
+                                            تم
+                                            رفع
+                                            بنجاح</p>
+                                        <p *ngIf="this.FileSizeAboveLimetCert()"
+                                            class="text-sm text-red-500 mt-2 text-center font-bold">
+                                            حجم الملف اكبر من 2mb
+                                        </p>
+                                        <p *ngIf="ShowCert" class="text-sm text-gray-500 mt-2 text-center font-bold">اسم
+                                            الملف
+                                            {{ NameFileCert }}</p>
+                                    </div>
+                                </div>
+
+                                <!-- ID Image Upload -->
+                                <div class="h-auto">
+                                    <div [class]="this.FilePersinalImageV()=='3' ? 'border-2 border-red-800' : ''"
+                                        class="bg-gray-50 rounded-lg p-4">
+                                        <p class="block mb-3 text-gray-700 font-medium text-sm">أرفق نسخة صورة الهوية
+                                            pdf
+                                        </p>
+                                        <input type="file" #fileUploadimg id="fileUploadPers"
+                                            formControlName="filepersionalimage" class="hidden"
+                                            (change)="onChageFilePersinalImage($event)">
+                                        <button type="button" (click)="fileUploadimg.click()"
+                                            class="w-full py-3 bg-green text-white rounded-lg hover:bg-blue-600 text-sm">
+                                            تصفح ملفاتك
+                                        </button>
+                                        <p *ngIf="ShowPersinalImage"
+                                            class="text-sm text-gray-500 mt-2 text-center font-bold">✅
+                                            تم رفع بنجاح</p>
+                                        <p *ngIf="this.FileSizeAboveLimetImage()"
+                                            class="text-sm text-red-500 mt-2 text-center font-bold">
+                                            حجم الملف اكبر من 4m
+                                        </p>
+                                        <p *ngIf="ShowPersinalImage"
+                                            class="text-sm text-gray-500 mt-2 text-center font-bold">
+                                            اسم الملف {{ NameFilePer }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirmation Card -->
+                <div class="col-span-1 md:col-span-2 mb-6">
+                    <div class="bg-white rounded-xl shadow-md border border-gray-200">
+                        <div class="bg-white rounded-t-xl p-6 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-green">تأكيد المعلومات</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex flex-col space-y-6">
+                                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200"
+                                    [class]="this.CheckedV()=='3' ? 'border-2 border-redd' : ''">
+                                    <div class="flex items-center mt-1">
+                                        <input type="checkbox" formControlName="check"
+                                            (change)="onCheckboxChange($event)"
+                                            class="w-5 h-5 hover:bg-gold rounded border-gray-300 focus:ring-blue-500">
+                                    </div>
+                                    <p class="w-3/4 text-gray-700 text-sm leading-relaxed">
+                                        أقر انا المتقدم بأن جميع البيانات والمعلومات والمستندات المقدمة صحيحة ودقيقة ،
+                                        وأتحمل
+                                        كامل
+                                        المسؤولية عن صحتها، وأوافق على استبعاد طلبي واتخاذ كافة الاجراءات القانونية في
+                                        حال
+                                        ثبوت
+                                        خلاف ذلك
+                                    </p>
+                                </div>
+
+                                <div class="flex justify-center ">
+                                    <button (click)="FullyResgistration()"
+                                        class="px-8 py-3 bg-green text-white font-medium text-lg rounded-lg hover:bg-gold focus:outline-none focus:ring-4 focus:ring-blue-300 shadow hover:shadow-md transition-all duration-200">
+                                        سجل طلبك
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+
+    <!--end all info-->
+
+    <!--start footer-->
+    <div>
+        <div
+            class="min-h-24 bg-green flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 px-4 py-3 sm:py-0">
+            <img class="h-16 sm:h-20 w-auto" src="assets/images/13.webp" alt="وزارة الخارجية الطاقة">
+            <p class="text-white text-sm sm:text-base text-center sm:text-right">
+                © وزارة الطاقة | الجمهورية العربية السورية جميع الحقوق محفوظة 2026
+            </p>
+        </div>
+    </div>
+
+    <!--end footer-->
+</div>
